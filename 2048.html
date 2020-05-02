@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>2048</title>
+</head>
+
+<body>
+
+
+
+	<div class="container">
+		<div>
+			<input type="button" style="width:60px;height:40px;font-size:20px" onclick="start()" value='GO'></input>
+		</div>
+		<br />
+		<div>
+			<input type="button" style="width:40px;height:40px;font-size:20px" onclick="up()" value='^'></input>
+			<input type="button" style="width:40px;height:40px;font-size:20px" onclick="down()" value='v'></input>
+			<input type="button" style="width:40px;height:40px;font-size:20px" onclick="left()" value='<'></input>
+			<input type="button" style="width:40px;height:40px;font-size:20px" onclick="right()" value='>'> </input>
+		</div>
+		<br />
+
+		<div>
+			<input type="button" id="btn0" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn1" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn2" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn3" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn4" style="width:80px;height:80px;font-size:20px" value='' />
+		</div>
+		<div>
+			<input type="button" id="btn5" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn6" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn7" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn8" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn9" style="width:80px;height:80px;font-size:20px" value='' />
+		</div>
+		<div>
+			<input type="button" id="btn10" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn11" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn12" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn13" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn14" style="width:80px;height:80px;font-size:20px" value='' />
+		</div>
+		<div>
+			<input type="button" id="btn15" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn16" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn17" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn18" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn19" style="width:80px;height:80px;font-size:20px" value='' />
+		</div>
+		<div>
+			<input type="button" id="btn20" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn21" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn22" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn23" style="width:80px;height:80px;font-size:20px" value='' />
+			<input type="button" id="btn24" style="width:80px;height:80px;font-size:20px" value='' />
+		</div>
+	</div>
+	<script>
+		
+
+
+		var num = ['2', '2', '2', '2', '2', '2', '4', '4', '4', '4', '4', '4', '8', '8', '8'];
+
+		function start() {
+			var arr1=["btn0","btn1","btn2","btn3",
+					"btn4","btn5","btn6","btn7",
+					"btn8","btn9","btn10","btn11",
+					"btn12","btn13","btn14","btn15",
+					"btn16","btn17","btn18","btn19",
+					"btn20","btn21","btn22","btn23",
+					"btn24"];
+			var arr = new Array();
+			for (var i = 0; i < 25; i++) {
+				arr[i] = ' ';
+				console.log(i, arr[i]);
+			}
+			var num1 = num[Math.floor(Math.random() * 15)];
+			arr[Math.floor(Math.random() * 25)] = 2;
+			k=0;
+			for (var i = 0; i < 25; i++) {
+				document.getElementById(arr1[k]).value = arr[i];
+				k++;
+			}
+
+		}
+
+		function up() {
+			var num = new Array();
+			num[0]=new Array();
+			num[1]=new Array();
+			num[2]=new Array();
+			num[3]=new Array();
+			num[4]=new Array();
+
+			num[0][0]=document.getElementById("btn4").value;
+			num[0][1]=document.getElementById("btn9").value;
+			num[0][2]=document.getElementById("btn14").value;
+			num[0][3]=document.getElementById("btn19").value;
+			num[0][4]=document.getElementById("btn24").value;
+			num[1][0]=document.getElementById("btn3").value;
+			num[1][1]=document.getElementById("btn8").value;
+			num[1][2]=document.getElementById("btn13").value;
+			num[1][3]=document.getElementById("btn18").value;
+			num[1][4]=document.getElementById("btn23").value;
+			num[2][0]=document.getElementById("btn2").value;
+			num[2][1]=document.getElementById("btn7").value;
+			num[2][2]=document.getElementById("btn12").value;
+			num[2][3]=document.getElementById("btn17").value;
+			num[2][4]=document.getElementById("btn22").value;
+			num[3][0]=document.getElementById("btn1").value;
+			num[3][1]=document.getElementById("btn6").value;
+			num[3][2]=document.getElementById("btn11").value;
+			num[3][3]=document.getElementById("btn16").value;
+			num[3][4]=document.getElementById("btn21").value;
+			num[4][0]=document.getElementById("btn0").value;
+			num[4][1]=document.getElementById("btn5").value;
+			num[4][2]=document.getElementById("btn10").value;
+			num[4][3]=document.getElementById("btn15").value;
+			num[4][4]=document.getElementById("btn20").value;
+
+			num=p1(num);
+			num=p2(num);
+			num=p1(num);
+			num=p3(num);
+
+			document.getElementById("btn4").value=num[0][0];
+			document.getElementById("btn9").value=num[0][1];
+			document.getElementById("btn14").value=num[0][2];
+			document.getElementById("btn19").value=num[0][3];
+			document.getElementById("btn24").value=num[0][4];
+			document.getElementById("btn3").value=num[1][0];
+			document.getElementById("btn8").value=num[1][1];
+			document.getElementById("btn13").value=num[1][2];
+			document.getElementById("btn18").value=num[1][3];
+			document.getElementById("btn23").value=num[1][4];
+			document.getElementById("btn2").value=num[2][0];
+			document.getElementById("btn7").value=num[2][1];
+			document.getElementById("btn12").value=num[2][2];
+			document.getElementById("btn17").value=num[2][3];
+			document.getElementById("btn22").value=num[2][4];
+			document.getElementById("btn1").value=num[3][0];
+			document.getElementById("btn6").value=num[3][1];
+			document.getElementById("btn11").value=num[3][2];
+			document.getElementById("btn16").value=num[3][3];
+			document.getElementById("btn21").value=num[3][4];
+			document.getElementById("btn0").value=num[4][0];
+			document.getElementById("btn5").value=num[4][1];
+			document.getElementById("btn10").value=num[4][2];
+			document.getElementById("btn15").value=num[4][3];
+			document.getElementById("btn20").value=num[4][4];
+
+		}
+		function down() {
+			var num = new Array();
+			num[0]=new Array();
+			num[1]=new Array();
+			num[2]=new Array();
+			num[3]=new Array();
+			num[4]=new Array();
+
+			num[0][0]=document.getElementById("btn20").value;
+			num[0][1]=document.getElementById("btn15").value;
+			num[0][2]=document.getElementById("btn10").value;
+			num[0][3]=document.getElementById("btn5").value;
+			num[0][4]=document.getElementById("btn0").value;
+			num[1][0]=document.getElementById("btn21").value;
+			num[1][1]=document.getElementById("btn16").value;
+			num[1][2]=document.getElementById("btn11").value;
+			num[1][3]=document.getElementById("btn6").value;
+			num[1][4]=document.getElementById("btn1").value;
+			num[2][0]=document.getElementById("btn22").value;
+			num[2][1]=document.getElementById("btn17").value;
+			num[2][2]=document.getElementById("btn12").value;
+			num[2][3]=document.getElementById("btn7").value;
+			num[2][4]=document.getElementById("btn2").value;
+			num[3][0]=document.getElementById("btn23").value;
+			num[3][1]=document.getElementById("btn18").value;
+			num[3][2]=document.getElementById("btn13").value;
+			num[3][3]=document.getElementById("btn8").value;
+			num[3][4]=document.getElementById("btn3").value;
+			num[4][0]=document.getElementById("btn24").value;
+			num[4][1]=document.getElementById("btn19").value;
+			num[4][2]=document.getElementById("btn14").value;
+			num[4][3]=document.getElementById("btn9").value;
+			num[4][4]=document.getElementById("btn4").value;
+
+			num=p1(num);
+			num=p2(num);
+			num=p1(num);
+			num=p3(num);
+
+			document.getElementById("btn20").value=num[0][0];
+			document.getElementById("btn15").value=num[0][1];
+			document.getElementById("btn10").value=num[0][2];
+			document.getElementById("btn5").value=num[0][3];
+			document.getElementById("btn0").value=num[0][4];
+			document.getElementById("btn21").value=num[1][0];
+			document.getElementById("btn16").value=num[1][1];
+			document.getElementById("btn11").value=num[1][2];
+			document.getElementById("btn6").value=num[1][3];
+			document.getElementById("btn1").value=num[1][4];
+			document.getElementById("btn22").value=num[2][0];
+			document.getElementById("btn17").value=num[2][1];
+			document.getElementById("btn12").value=num[2][2];
+			document.getElementById("btn7").value=num[2][3];
+			document.getElementById("btn2").value=num[2][4];
+			document.getElementById("btn23").value=num[3][0];
+			document.getElementById("btn18").value=num[3][1];
+			document.getElementById("btn13").value=num[3][2];
+			document.getElementById("btn8").value=num[3][3];
+			document.getElementById("btn3").value=num[3][4];
+			document.getElementById("btn24").value=num[4][0];
+			document.getElementById("btn19").value=num[4][1];
+			document.getElementById("btn14").value=num[4][2];
+			document.getElementById("btn9").value=num[4][3];
+			document.getElementById("btn4").value=num[4][4];
+
+		}
+		function left() {
+			var num = new Array();
+			num[0]=new Array();
+			num[1]=new Array();
+			num[2]=new Array();
+			num[3]=new Array();
+			num[4]=new Array();
+			num[0][0]=document.getElementById("btn0").value;
+			num[0][1]=document.getElementById("btn1").value;
+			num[0][2]=document.getElementById("btn2").value;
+			num[0][3]=document.getElementById("btn3").value;
+			num[0][4]=document.getElementById("btn4").value;
+			num[1][0]=document.getElementById("btn5").value;
+			num[1][1]=document.getElementById("btn6").value;
+			num[1][2]=document.getElementById("btn7").value;
+			num[1][3]=document.getElementById("btn8").value;
+			num[1][4]=document.getElementById("btn9").value;
+			num[2][0]=document.getElementById("btn10").value;
+			num[2][1]=document.getElementById("btn11").value;
+			num[2][2]=document.getElementById("btn12").value;
+			num[2][3]=document.getElementById("btn13").value;
+			num[2][4]=document.getElementById("btn14").value;
+			num[3][0]=document.getElementById("btn15").value;
+			num[3][1]=document.getElementById("btn16").value;
+			num[3][2]=document.getElementById("btn17").value;
+			num[3][3]=document.getElementById("btn18").value;
+			num[3][4]=document.getElementById("btn19").value;
+			num[4][0]=document.getElementById("btn20").value;
+			num[4][1]=document.getElementById("btn21").value;
+			num[4][2]=document.getElementById("btn22").value;
+			num[4][3]=document.getElementById("btn23").value;
+			num[4][4]=document.getElementById("btn24").value;
+
+			num=p1(num);
+			num=p2(num);
+			num=p1(num);
+			num=p3(num);
+
+			document.getElementById("btn0").value=num[0][0];
+			document.getElementById("btn1").value=num[0][1];
+			document.getElementById("btn2").value=num[0][2];
+			document.getElementById("btn3").value=num[0][3];
+			document.getElementById("btn4").value=num[0][4];
+			document.getElementById("btn5").value=num[1][0];
+			document.getElementById("btn6").value=num[1][1];
+			document.getElementById("btn7").value=num[1][2];
+			document.getElementById("btn8").value=num[1][3];
+			document.getElementById("btn9").value=num[1][4];
+			document.getElementById("btn10").value=num[2][0];
+			document.getElementById("btn11").value=num[2][1];
+			document.getElementById("btn12").value=num[2][2];
+			document.getElementById("btn13").value=num[2][3];
+			document.getElementById("btn14").value=num[2][4];
+			document.getElementById("btn15").value=num[3][0];
+			document.getElementById("btn16").value=num[3][1];
+			document.getElementById("btn17").value=num[3][2];
+			document.getElementById("btn18").value=num[3][3];
+			document.getElementById("btn19").value=num[3][4];
+			document.getElementById("btn20").value=num[4][0];
+			document.getElementById("btn21").value=num[4][1];
+			document.getElementById("btn22").value=num[4][2];
+			document.getElementById("btn23").value=num[4][3];
+			document.getElementById("btn24").value=num[4][4];
+
+
+		}
+		function right() {
+			var num = new Array();
+			num[0]=new Array();
+			num[1]=new Array();
+			num[2]=new Array();
+			num[3]=new Array();
+			num[4]=new Array();
+
+			num[0][0]=document.getElementById("btn24").value;
+			num[0][1]=document.getElementById("btn23").value;
+			num[0][2]=document.getElementById("btn22").value;
+			num[0][3]=document.getElementById("btn21").value;
+			num[0][4]=document.getElementById("btn20").value;
+			num[1][0]=document.getElementById("btn19").value;
+			num[1][1]=document.getElementById("btn18").value;
+			num[1][2]=document.getElementById("btn17").value;
+			num[1][3]=document.getElementById("btn16").value;
+			num[1][4]=document.getElementById("btn15").value;
+			num[2][0]=document.getElementById("btn14").value;
+			num[2][1]=document.getElementById("btn13").value;
+			num[2][2]=document.getElementById("btn12").value;
+			num[2][3]=document.getElementById("btn11").value;
+			num[2][4]=document.getElementById("btn10").value;
+			num[3][0]=document.getElementById("btn9").value;
+			num[3][1]=document.getElementById("btn8").value;
+			num[3][2]=document.getElementById("btn7").value;
+			num[3][3]=document.getElementById("btn6").value;
+			num[3][4]=document.getElementById("btn5").value;
+			num[4][0]=document.getElementById("btn4").value;
+			num[4][1]=document.getElementById("btn3").value;
+			num[4][2]=document.getElementById("btn2").value;
+			num[4][3]=document.getElementById("btn1").value;
+			num[4][4]=document.getElementById("btn0").value;
+
+			num=p1(num);
+			num=p2(num);
+			num=p1(num);
+			num=p3(num);
+
+			document.getElementById("btn24").value=num[0][0];
+			document.getElementById("btn23").value=num[0][1];
+			document.getElementById("btn22").value=num[0][2];
+			document.getElementById("btn21").value=num[0][3];
+			document.getElementById("btn20").value=num[0][4];
+			document.getElementById("btn19").value=num[1][0];
+			document.getElementById("btn18").value=num[1][1];
+			document.getElementById("btn17").value=num[1][2];
+			document.getElementById("btn16").value=num[1][3];
+			document.getElementById("btn15").value=num[1][4];
+			document.getElementById("btn14").value=num[2][0];
+			document.getElementById("btn13").value=num[2][1];
+			document.getElementById("btn12").value=num[2][2];
+			document.getElementById("btn11").value=num[2][3];
+			document.getElementById("btn10").value=num[2][4];
+			document.getElementById("btn9").value=num[3][0];
+			document.getElementById("btn8").value=num[3][1];
+			document.getElementById("btn7").value=num[3][2];
+			document.getElementById("btn6").value=num[3][3];
+			document.getElementById("btn5").value=num[3][4];
+			document.getElementById("btn4").value=num[4][0];
+			document.getElementById("btn3").value=num[4][1];
+			document.getElementById("btn2").value=num[4][2];
+			document.getElementById("btn1").value=num[4][3];
+			document.getElementById("btn0").value=num[4][4];
+
+
+		}
+
+		//向一邊靠
+		function p1(num) {
+			for(var k=0;k<num.length;k++) {
+				//處理單一層
+				for(var i=0;i<num[k].length;i++) {
+					for(var j=i+1;j<num[k].length;j++) {
+						if(" "==num[k][i]) {
+							num[k][i]=num[k][j];
+							num[k][j]=" ";
+						}
+					}
+				}
+			}
+			return num;
+		}		
+		//相加
+		function p2(num){
+			for(var k=0;k<5;k++) {
+			//處理單一層
+			for(var i=0;i<4;i++) {
+				if(num[k][i]==num[k][i+1] && num[k][i] !== " ") {
+					num[k][i]=num[k][i] * 2;
+					num[k][i+1]=" ";
+				}
+			}
+			}
+			return num;
+		}
+		//加一個值
+		function p3(num){
+			while(true){
+				var a=Math.floor(Math.random() * 5);
+				var b=Math.floor(Math.random() * 5);
+				if(num[a][b] ==" "){
+					num[a][b]="2";
+					break;
+				}
+			}
+			return num;
+		}
+
+	</script>
+
+</body>
+
+</html>
