@@ -1,0 +1,69 @@
+  <!-- *****input*****-->
+        <div class="formItem">
+          <systex-label [title]="'查詢作帳日期'"></systex-label><span>：</span>
+            <systex-text-input
+              id="KENTDAY"
+              [maxlength]="8"
+              [fieldType]="'R'"
+              [systexTabIndex]="1"
+              [width]="100"
+			  [size]="3"
+              [formatType]="'D11'"
+              (change)="focusChangeKDSCPT()"
+			  style="color: red;"			  
+            ></systex-text-input>
+        </div>
+
+			
+        <!-- *****select*****-->
+        <div class="formItem">
+          <systex-label [title]="'查詢碼'"></systex-label><span>：</span>
+            <systex-select
+              id="KINQCD"   
+              [dataSourceName]="'G14.B01'"
+              [fieldType]="'N'"
+              [systexTabIndex]="2"
+              [width]="180"
+			  [size]="3"
+              [labelFormat]="'F1'"
+              (change)="focusChangeKINQCD()"			  
+            ></systex-select>
+        </div>
+ 
+
+
+//基本架構
+<systex-form-management #form [store]="store" (dataChange)="dataChange($event)"
+  (afterViewInit)="formManagementAfterViewInit()">
+  <div class="transaction-area">
+    <div class="transaction-form">
+      <div class="group-body">
+        <div class="h-group">
+        </div>
+      </div>
+    </div>
+    <div class="transaction-spacer"></div>
+    <div class="transaction-buttons">
+      <systex-button id="btnOK" [systexTabIndex]="'900'">確認</systex-button>
+      <systex-button id="btnCANCEL" [systexTabIndex]="'901'">取消</systex-button>
+      <systex-button id="btnEXIT" [systexTabIndex]="'902'">離開</systex-button>
+    </div>
+  </div>
+</systex-form-management>
+
+
+
+
+
+
+//底下的按鈕
+    <div class="transaction-buttons">
+      <systex-button id="btnOK" [systexTabIndex]="'900'">確認</systex-button>
+      <systex-button id="btnCANCEL" [systexTabIndex]="'901'">取消</systex-button>
+      <systex-button id="btnEXIT" [systexTabIndex]="'902'">離開</systex-button>
+    </div>
+
+
+//垂直
+<div class="h-group">
+</div>
