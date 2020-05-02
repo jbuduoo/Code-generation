@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head></head>
+<body>
+
+	<button onclick="f()">change</button>
+	<button onclick="clearAll()">clear</button>
+	
+	<form>
+	<div  style="display: flex; flex-direction: row;">
+	
+	<div  style="width: 100%;">
+	<h3 >HTML</h3>
+	<textarea  rows="30" style="width: 95%;" id="fname"></textarea>
+	</div>
+	
+	<div style="width: 100%;">
+	<h3 >HTML2</h3>
+	<textarea  rows="30" style="width: 95%;" id="fname2"></textarea>
+	</div>
+	</div>
+	
+	</form>
+	<script language="javascript">
+		function f(){
+			var fname=document.getElementById('fname').value;
+			fname=fname.replace(new RegExp("</systex-label>",'g'),"</systex-label><span>：</span>");
+			fname=fname.replace("formManagementAfterViewInit($event)","formManagementAfterViewInit()");
+			fname=fname.replace(new RegExp("ModuleConsts",'g'),"moduleConsts");
+			<!--//<systex-reverse-label id="RL">,<systex-reverse-label id="RL" [dbcrFlag]="dbcrFlag" [reverseFlag]="ReversalFlag">-->
+			fname=fname.replace(new RegExp("<systex-reverse-label id=\"RL\"",'g'),"<systex-reverse-label id=\"RL\" [dbcrFlag]=\"dbcrFlag\" [reverseFlag]=\"ReversalFlag\" ");
+			
+			<!--//<systex-reverse-group id="RG">,<systex-reverse-group id="RG" (reverseKeydown)="onBDSCPTReverseKeydown($event)">-->
+			fname=fname.replace(new RegExp("<systex-reverse-group id=\"RG\"",'g'),"<systex-reverse-group id=\"RG\" (reverseKeydown)=\"onBDSCPTReverseKeydown($event)\" ");
+			
+			
+			fname=fname.replace(new RegExp("<systex-text-input",'g'),"@<systex-text-input");
+			fname=fname.replace(new RegExp("</systex-text-input>",'g'),"</systex-text-input>@");
+			var array=fname.split("@");
+		
+			var str="";
+			for(var i=0;i<array.length;i++){
+				if(array[i].indexOf('<systex-text-input')>=0){
+					if(array[i].indexOf('[maxlength]')>=0 && array[i].indexOf('[width]')==-1){
+						var indexOf1=array[i].indexOf('[maxlength]');
+						var indexOf2=array[i].indexOf('	');
+						var width=array[i].substring(indexOf1+12,indexOf1+15);
+						width=width.replace(new RegExp("\"",'g'),"");
+						array[i]=array[i].replace('<systex-text-input','          <systex-text-input \n            [width]=\"'+width*15+'\"');
+					}else if(array[i].indexOf('[maxlength]')>=0 && /\[width\].+%./.test(array[i])){
+						array[i]=array[i].replace(/\[width\].+%./,"");
+						var indexOf1=array[i].indexOf('[maxlength]');
+						var indexOf2=array[i].indexOf('	');
+						var width=array[i].substring(indexOf1+12,indexOf1+15);
+						width=width.replace(new RegExp("\"",'g'),"");
+						array[i]=array[i].replace('<systex-text-input','          <systex-text-input \n            [width]=\"'+width*15+'\"');
+					}	
+				}
+				str+=array[i]+"\n";
+			}
+			if(str.lastIndexOf('transaction-area') !=str.indexOf('transaction-area')){
+				var indexOf3=str.lastIndexOf('transaction-area');
+				var str2=str.substring(0,indexOf3-14)+"</systex-form-management>";
+				document.getElementById('fname2').value = str2;	
+			}else{
+				document.getElementById('fname2').value = str;
+			}
+		}
+
+		function clearAll(){
+			document.getElementById('fname2').value='';
+			document.getElementById('fname').value='';
+		}
+		
+	</script>
+</body>
+</html>
