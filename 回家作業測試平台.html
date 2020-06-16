@@ -1,0 +1,33 @@
+
+<!doctype html>
+<html lang="zh" dir="ltr">
+<head></head>
+<body>
+
+	<button onclick="fun1()">change</button>
+	<button onclick="fun2()">clear</button>
+	
+	<form>
+	<div  style="display: flex; flex-direction: row;">
+	
+	<div  style="width: 100%;">
+	<h3 >HTML</h3>
+	<textarea  rows="30" style="width: 95%;" id="fname"></textarea>
+	</div>
+	<h3 >HTML</h3>
+	<textarea  rows="30" style="width: 95%;" id="fname2">看可不可以輸入指令，直接輸出結果，把這個做成一個ide介面，這樣又會是一個新的玩具了。</textarea>
+	</div>
+	
+	</form>
+	<script language="javascript">
+		function fun1(){
+			var a=document.getElementById('fname').value;
+			a;
+		}
+		function fun2(){
+			var a=document.getElementById('fname').value;
+		}
+		
+	</script>
+</body>
+</html>
